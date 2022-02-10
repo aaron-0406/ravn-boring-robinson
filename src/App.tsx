@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ThemeContextProvider, { useThemeContext } from "./Context/ThemeToggle";
+import UserContextProvider, { useUserContext } from "./Context/UserInfo";
+import "./styles.css";
 
-function App() {
+const DemoOne = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ThemeContextProvider>
+        <ThemeSwitcher />
+        <UserContextProvider>
+          <MainLayout />
+        </UserContextProvider>
+      </ThemeContextProvider>
     </div>
   );
-}
+};
 
-export default App;
+const ThemeSwitcher = () => {
+  const { toggleTheme } = useThemeContext();
+  console.log("xd");
+
+  return <button onClick={toggleTheme}>Change theme</button>;
+};
+
+const MainLayout = () => {
+  const { isLightMode, light, dark } = useThemeContext();
+  const { name, addCar, updateCar, removeCar } = useUserContext();
+
+  const theme = isLightMode ? light : dark;
+
+  return (
+    <div className="main" style={{ background: theme.bg }}>
+      <div style={{ color: theme.text }}>{`Hello ${name}`}</div>
+      <div>
+        <button onClick={addCar}>Add Car</button>
+        <button onClick={updateCar}>Update Car</button>
+        <button onClick={removeCar}>Remove Car</button>
+      </div>
+    </div>
+  );
+};
+
+export default DemoOne;
+
+// https://github.com/facebook/react/issues/15156
