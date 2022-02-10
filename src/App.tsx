@@ -17,7 +17,6 @@ const DemoOne = () => {
 
 const ThemeSwitcher = () => {
   const { toggleTheme } = useThemeContext();
-  console.log("xd");
 
   return <button onClick={toggleTheme}>Change theme</button>;
 };
