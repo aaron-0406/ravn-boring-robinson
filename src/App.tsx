@@ -1,7 +1,7 @@
 import ThemeContextProvider, { useThemeContext } from "./Context/ThemeToggle";
 import UserContextProvider, { useUserContext } from "./Context/UserInfo";
 import "./styles.css";
-
+ 
 const DemoOne = () => {
   return (
     <div>

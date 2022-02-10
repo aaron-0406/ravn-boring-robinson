@@ -17,7 +17,7 @@ const initialState = {
   ],
 };
 
-export const UserContext = createContext<IUserContext>(initialState);
+export const UserContext = createContext<IUserContext>(initialState); 
 
 export const useUserContext = () => {
   const context = useContext(UserContext);

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react"; 
 import { IThemeContext } from "../interfaces/Theme";
 
 const initialState: IThemeContext = {

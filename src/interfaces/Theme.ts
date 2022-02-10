@@ -1,5 +1,5 @@
 //ILightDark
-// I -> Interface
+// I -> Interface 
 
 export interface ILightDark {
   bg: string;
